@@ -9,7 +9,7 @@ require('/home/bitnami/blogger/app_server/models/db');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname + '/app_server', 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
