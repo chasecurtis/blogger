@@ -1,11 +1,26 @@
 var mongoose = require('mongoose');
 
 var blogSchema = new mongoose.Schema({
-	blog-title: String,
-	author: String,
-	created-on: {
-		type: Date,
-		"default": Date.now
-	}
-	blog-text: String
+    blogTitle:
+    {
+	type: String,
+	required: true
+    },
+    author:
+    {
+	type: String,
+	required: true
+    },
+    createdOn:
+    {
+	type: Date,
+	"default": Date.now
+    },
+    blogText:
+    {
+	type: String,
+	required: true
+    }
 });
+
+mongoose.model('blog', blogSchema);
