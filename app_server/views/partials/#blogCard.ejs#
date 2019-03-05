@@ -6,7 +6,7 @@
     <div class="panel panel-primary">
          <div class="panel-heading">
            <h3 class="panel-title">Blog title</h3>
-         <div>
+         <div> 
          <div class="panel-body">Blog content</div>
 	<div class="row">
                                 <ul class="nav justify-content-end nav-pills panel-header-pills">

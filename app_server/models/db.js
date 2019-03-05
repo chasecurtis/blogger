@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var gracefulShutdown;
 var dbURI = 'mongodb://localhost/blogger';
 
+mongoose.set('debug', true);
 mongoose.connect(dbURI);
 
 
@@ -9,6 +11,13 @@ mongoose.connection.on('connected', function ()
 {
 	console.log('Mongoose connected to ' + dbURI);
 });
+
+//var blogModel = mongoose.model('blog');
+
+/*blogModel.find({}).sort({date: 'desc'}).exec(function(err)
+{
+    console.log("Can't find blog");
+});*/ 
 
 // Monitor and report error connecting to database
 mongoose.connection.on('error', function (err) 
@@ -40,5 +49,6 @@ process.on('SIGINT', function ()
 	});
 });
 
-
+// Bring in blog schema
+require('./blogs');
 

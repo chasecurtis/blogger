@@ -1,3 +1,12 @@
+.nav-pills li 
+{
+	margin-left: 10px;
+}
+
+.panel-default { 
+    border-color: #dddddd !important;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
