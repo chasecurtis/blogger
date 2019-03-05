@@ -1,24 +1,30 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
-<div class="container">
-<div id="blogPanel" class="span4">
-    <div class="panel panel-primary">
-         <div class="panel-heading">
-           <h3 class="panel-title">Blog title</h3>
-         <div>
-         <div class="panel-body">Blog content</div>
-	<div class="row">
-                                <ul class="nav justify-content-end nav-pills panel-header-pills">
-                                <li class="nav-item">
-                                        <i class="fa fa-pencil-square-o" title="Edit"></i>
-                                </li>
-                                <li class="nav-item">
-                                        <i class="fa fa-trash" title="Delete"></i>
-                                </li>
-                           </ul>
-                        </div>
+<div class="card border-primary" style="width: 50%">
+    <div class="card-header">
+        <div class="row">
+
+        </div>
+	    </div>
+	    <div class="card-body">
+		        <h5 class ="card-title"><%=blog.title%></h5>
+			        <div class="col-sm"><p class="card-text"><%=blog.created%></p></div>
+
+        <p class="card-text"><%=blog.content%></p>
+	</div>
+    <div class="card-footer">
+        <div class = "col-sm">
+           <ul class="nav justify-content-end nav-pills card-header-pills">
+             <li class="nav-item">
+                 <a class="nav-link" href="/edit"> <i class="fa fa-pencil-square-o"></i></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="/del"> <i class="fa fa-trash"></i></a>
+             </li>
+           </ul>
+	</div>	
     </div>
 </div>
-       </div>
-</div>
+<p> <!-- card -->
+

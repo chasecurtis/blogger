@@ -13,16 +13,47 @@ module.exports.index = function(req, res) {
 
 /* GET list page */
 module.exports.list = function(req, res) {
-    res.render('list', { title: 'Blog List'});
-};
+    res.render('list', {
+	title: 'Blog List',
+	blogs: [{
+	    title: "Lessons from Mongo",
+	    created: Date.now,
+	    author: "Chase",
+	    content: "Hello, Mongo is very interesting it is not a relational database. That is all"
+	},
+	{
+	    title: "Lessons from Mongo #2",
+	    created: Date.now,
+	    author: "Chase",
+	    content: "Hello. Mongo stores data as documents. Thanks."
+	},
+	{
+	    title: 'Holy cow!',
+	    created: Date.now,
+	    author: 'Chase',
+	    content: "I'm sure there's a holy cow somewhere in Lancaster.... hmmm."
+	}]
 
+    });
+};
 
 /* GET add page */
 module.exports.add = function(req, res) {
  	res.render('add', { title: 'Blog Add'});
 };
 
+/* GET edit page */
+module.exports.edit = function(req, res) {
+    res.render('edit', {title: 'Edit Blog'});
+};
+
+/* GET delete page */
+module.exports.del = function(req, res) {
+    res.render('del', {title: 'Delete Blog'});
+};
+
 /* GET login page */
 module.exports.login = function(req, res) {
- 	res.render('login', { title: 'Login'});
+    res.render('login', { title: 'Login'});
 };
+

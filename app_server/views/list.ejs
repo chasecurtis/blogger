@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="/css/fontawesome-all.css">
+<link rel="stylesheet" href="/css/fontawesome-all.css">
  </head> 
   <body>
 <div class="container">
   <% include ./partials/nav %>
   <p></p>
-  <ul>
-    <!-- BlogList.forEach(function(Blog) { -->
-    <li><!-- Blog -->
-     <!-- }); -->
-  <% include ./partials/blogCard %></li>
- <li><% include ./partials/blogCard %></li>
- <li><% include ./partials/blogCard %></li>
 
- <div class="panel panel-default">
+  <%  let blog = {}; %>
+  <% if (blogs.length == 0) { %>
+  <h4> No blogs to display. Click <a href="/add">here</a> to add one.</h4>
+  <%} else {%>
+  <% for(let i = 0; i < blogs.length; i++) {
+			blog = blogs[i] %>
+     <% include ./partials/blogCard %>
+     <% } %>
+             <% } %>
+
+	     <div class="panel panel-default">
    <p></p>
-        
         </div>
 </div>
 
@@ -30,4 +31,3 @@
 <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
 </html>
-

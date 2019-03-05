@@ -13,7 +13,8 @@ router.get('/', ctrlBlog.index);
 router.get('/list', ctrlBlog.list);
 router.get('/add', ctrlBlog.add);
 router.get('/login', ctrlBlog.login);
-
+router.get('/edit', ctrlBlog.edit);
+router.get('/del', ctrlBlog.del);
 
 
 module.exports = router;
