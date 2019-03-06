@@ -20,7 +20,7 @@ module.exports.list = function(req, res) {
 	    title: "Lessons from Mongo",
 	    created: moment('02/05/2019', 'MM/DD/YYYY'),
 	    author: "Chase",
-	    content: "Hello, Mongo is very interesting it is not a relational database. That is all"
+	    content: "Hello, Mongo is very interesting it is not a relational database. That is all."
 	},
 	{
 	    title: "Lessons from Mongo #2",
