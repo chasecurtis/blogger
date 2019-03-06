@@ -5,7 +5,7 @@ var Schema = mongoose.Schema,
 var Blog = new Schema({
     id: ObjectId,
     title: {type: String, required: true},
-    created: {type: Date, default: Date.now},
+    created: moment('02/05/2019', 'MM/DD/YYYY'),
     author: String,
     content: {type: String, required: true},
 });
