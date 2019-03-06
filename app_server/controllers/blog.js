@@ -18,19 +18,19 @@ module.exports.list = function(req, res) {
 	title: 'Blog List',
 	blogs: [{
 	    title: "Lessons from Mongo",
-	    created: moment('02/05/2019', 'MM/DD/YYYY'),
+	    created: {type: Date, default: Date.now},
 	    author: "Chase",
 	    content: "Hello, Mongo is very interesting it is not a relational database. That is all."
 	},
 	{
 	    title: "Lessons from Mongo #2",
-	    created: moment('02/05/2019', 'MM/DD/YYYY'),
+	    created: {type: Date, default: Date.now},
 	    author: "Chase",
 	    content: "Hello. Mongo stores data as documents. Thanks."
 	},
 	{
 	    title: 'Holy cow!',
-	    created: moment('02/05/2019', 'MM/DD/YYYY'),
+	    created: {type: Date, default: Date.now},
 	    author: 'Chase',
 	    content: "I'm sure there's a holy cow somewhere in Lancaster.... hmmm."
 	}]
