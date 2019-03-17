@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var moment = require('moment');
+var luxon = require('luxon');
 // Include Mongoose DB
 var db = require('../models/db');
 // Include Blogs Model
 var blogs = require('../models/blogs');
+
 
 /* GET home page */
 module.exports.index = function(req, res) {
@@ -18,19 +20,19 @@ module.exports.list = function(req, res) {
 	title: 'Blog List',
 	blogs: [{
 	    title: "Lessons from Mongo",
-	    created: {type: Date, default: Date.now},
+	    created: now,
 	    author: "Chase",
 	    content: "Hello, Mongo is very interesting it is not a relational database. That is all."
 	},
 	{
 	    title: "Lessons from Mongo #2",
-	    created: {type: Date, default: Date.now},
+	    created: now,
 	    author: "Chase",
 	    content: "Hello. Mongo stores data as documents. Thanks."
 	},
 	{
 	    title: 'Holy cow!',
-	    created: {type: Date, default: Date.now},
+	    created: now,
 	    author: 'Chase',
 	    content: "I'm sure there's a holy cow somewhere in Lancaster.... hmmm."
 	}]
