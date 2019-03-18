@@ -10,7 +10,7 @@ var blog = new blogs.blogModel();
 
 // REST API //
 router.post('/api/blogs/:blogid', ctrlBlog.blogCreate);
-router.get('/api/blogsList', ctrlBlog.blogsListByCreation);
+router.get('/api/blogsList', ctrlBlog.list);
 router.get('/api/blogs/:blogid', ctrlBlog.blogReadOne);
 router.put('/api/blogs/:blogid', ctrlBlog.blogUpdateOne);
 router.delete('/api/blogs/:blogid', ctrlBlog.blogDeleteOne);

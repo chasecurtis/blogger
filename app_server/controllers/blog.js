@@ -3,9 +3,9 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var moment = require('moment');
 // Include Mongoose DB
-var db = require('../models/db');
+//var db = require('../models/db');
 // Include Blogs Model
-var blogs = require('../models/blogs');
+//var blogs = require('../models/blogs');
 
 /* GET home page */
 module.exports.index = function(req, res) {
