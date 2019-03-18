@@ -4,7 +4,7 @@ var Schema = mongoose.Schema,
     ObjectId = Schema.Types.ObjectId;
 
 var Blog = new Schema({
-    id: ObjectId,
+    blogid: ObjectId,
     title: {type: String, required: true},
     created:{type: Date, default: Date.now},
     author: String,
