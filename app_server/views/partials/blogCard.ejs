@@ -4,12 +4,14 @@
 <div class="card border-primary" style="width: 50%">
     <div class="card-header">
         <div class="row">
+<h5 class ="card-title"><%=blog.title%></h5>
+<div class="col-sm">
+<p class="card-text">Author: <%=blog.author%></p></div>
+
 
         </div>
 	    </div>
 	    <div class="card-body">
-		        <h5 class ="card-title"><%=blog.title%></h5>
-			<div class="col-sm"><p class="card-text">Author: <%=blog.author%></p></div>
 			        <div class="col-sm"><p class="card-text">Date posted: <%=blog.created%></p></div>
 
         <p class="card-text"><%=blog.content%></p>

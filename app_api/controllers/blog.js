@@ -9,17 +9,45 @@ var apiOptions = {
 // Include Mongoose DB
 var db = require('../models/db');
 // Include Blogs Model
-var blogs = require('../models/blogs');
+var Blog = mongoose.model('Blog');
 
 var sendJSONresponse = function(res, status, content) {
 	res.status(status);
 	res.json(content);
 };
 
+module.exports.blogList = function (req, res) {
+	Blog.find().exec(function (err, results) {
+		if (!results) {
+			sendJSONresponse (res, 404, {
+				"message" : "No blogs found"
+		});
+		} else if (err) {
+			sendJSONresponse (res, 404, err);
+			return;
+		}
+		sendJSONresponse (res, 200, buildBlogList (req, res, results));
+	});
+};
+
+var buildBlogList = function (req, res, results) {
+	var blogs = [];
+	results.forEach(function (obj) {
+		blogs.push({
+			title: obj.title,
+			created: obj.created,
+			author: obj.author,
+			content: obj.content,
+			id: obj.id
+		});
+	});
+	return blogs;
+};
+
 /* POST a new blog */
 module.exports.blogCreate = function (req, res) {
 	console.log(req.body);
-	blogModel
+	Blog
 		.create({
 	title: req.body.title,
 	created: req.body.created,
@@ -39,9 +67,9 @@ module.exports.blogCreate = function (req, res) {
 
 /* GET a single blog given ID */
 module.exports.blogReadOne = function (req, res) {
-	if(req.params && req.params.blogid) {
-	blogModel
-		.findById(req.params.blogid)
+	if(req.params && req.params.id) {
+	Blog	
+		.findById(req.params.id)
 		.exec(function(err, blog) {
 			if(!blog){
 			sendJSONresponse(res, 404, {"message" : "blogid not found"});
@@ -66,12 +94,10 @@ module.exports.blogReadOne = function (req, res) {
 module.exports.blogUpdateOne = function(req, res) {
     console.log("Updating a blog entry with id of " + req.params.id);
     console.log(req.body);
-    blogModel
-  	  .findOneAndUpdate(
+    Blog
+	.findOneAndUpdate(
 	     { _id: req.params.id },
- 	     { $set: {"Title": req.body.title}},
-	     { $set: {"Author": req.body.author}},
-	     { $set: {"Content": req.body.content}})
+ 	     { $set: {"title": req.body.title, "author": req.body.author, "content": req.body.content}}
 	     ,function(err, response) {
 	         if (err) {
 	  	         sendJSONresponse(res, 400, err);
@@ -79,13 +105,14 @@ module.exports.blogUpdateOne = function(req, res) {
 		        sendJSONresponse(res, 201, response);
 	        }
 	    }
-    };   
+	);    
+};   
 
 /* DELETE one blog given ID */
 module.exports.blogDeleteOne = function(req, res) {
     console.log("Deleting blog entry with id of " + req.params.id);
     console.log(req.body);
-    blogModel
+	Blog 
         .findByIdAndRemove(req.params.id)
         .exec (
             function(err, response) {
@@ -98,53 +125,4 @@ module.exports.blogDeleteOne = function(req, res) {
         );
 };                      
 
-
-/* GET blogs lists */      
-module.exports.list = function(req, res){
-    var requestOptions, path;
-    path = '/api/blogs';
-    requestOptions = { 
-        url : apiOptions.server + path,
-        method : "GET",
-        json : {},
-        qs : {} 
-        };
-    request(
-        requestOptions,
-        function(err, response, body) {
-            renderListPage(req, res, body);
-        }
-    );
-};
-
-/* Render the blog list page */
-var renderListPage = function(req, res, responseBody){
-    res.render('blog-list', {
-        title: 'Blog List',
-        pageHeader: {
-            title: 'Book List'
-        },
-        blogs: responseBody
-    });
-};                
-                
-/* GET add page */
-module.exports.add = function(req, res) {
- 	res.render('add', { title: 'Blog Add'});
-};
-
-/* GET edit page */
-module.exports.edit = function(req, res) {
-    res.render('edit', {title: 'Edit Blog'});
-};
-
-/* GET delete page */
-module.exports.del = function(req, res) {
-    res.render('del', {title: 'Delete Blog'});
-};
-
-/* GET login page */
-module.exports.login = function(req, res) {
-    res.render('login', { title: 'Login'});
-};
 

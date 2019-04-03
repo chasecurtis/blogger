@@ -46,3 +46,120 @@ Mongoose connected to mongodb://bloggerAdmin:boneDestroyer95!@localhost/blogger
 [0mGET /js/bootstrap.min.js [36m304 [0m0.323 ms - -[0m
 Mongoose disconnected
 Mongoose disconnected through app termination
+
+> blogger@0.0.0 start /home/bitnami/blogger
+> node ./bin/www
+
+(node:23108) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Mongoose connected to mongodb://localhost/blogger
+[0mGET / [36m304 [0m12.237 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.658 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.599 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.314 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.417 ms - -[0m
+[0mGET /list [32m200 [0m2.236 ms - 5237[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.466 ms - -[0m
+[0mGET /css/fontawesome-all.css [36m304 [0m0.665 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.433 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.955 ms - -[0m
+[0mGET /webfonts/fa-solid-900.woff2 [33m404 [0m1.769 ms - 1466[0m
+[0mGET /webfonts/fa-solid-900.woff [33m404 [0m0.939 ms - 1466[0m
+[0mGET /webfonts/fa-solid-900.ttf [33m404 [0m0.567 ms - 1466[0m
+[0mGET /blog-edit/5c77094a98df3c2bfe90d95c [33m404 [0m1.532 ms - 1466[0m
+[0mGET / [32m200 [0m1.807 ms - 962[0m
+[0mGET /list [31m500 [0m2.616 ms - 2107[0m
+[0mGET / [32m200 [0m0.896 ms - 962[0m
+[0mGET /stylesheets/style.css [32m200 [0m2.223 ms - 210[0m
+[0mGET /js/bootstrap.min.js [32m200 [0m2.162 ms - 55775[0m
+[0mGET /css/bootstrap.min.css [32m200 [0m1.906 ms - 153182[0m
+[0mGET /js/jquery.min.js [32m200 [0m3.435 ms - 86927[0m
+[0mGET /favicon.ico [33m404 [0m0.815 ms - 1466[0m
+[0mGET /list [31m500 [0m1.955 ms - 2107[0m
+[0mGET /add [32m200 [0m1.503 ms - 620[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.345 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.806 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.733 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.190 ms - -[0m
+[0mGET / [36m304 [0m0.793 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.255 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.852 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.826 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.901 ms - -[0m
+[0mGET / [36m304 [0m0.664 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.519 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.603 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.538 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.623 ms - -[0m
+[0mGET /list [31m500 [0m1.570 ms - 2107[0m
+[0mGET /list [31m500 [0m1.500 ms - 2107[0m
+[0mGET /list [31m500 [0m1.522 ms - 2107[0m
+[0mGET / [36m304 [0m0.818 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.275 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.786 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.355 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.380 ms - -[0m
+[0mGET /list [31m500 [0m1.554 ms - 2107[0m
+[0mGET /list [31m500 [0m1.432 ms - 2107[0m
+[0mGET /list [31m500 [0m1.543 ms - 2107[0m
+[0mGET /list [31m500 [0m1.512 ms - 2107[0m
+[0mGET /list [31m500 [0m1.546 ms - 2107[0m
+[0mGET /list [31m500 [0m1.519 ms - 2107[0m
+[0mGET /list [31m500 [0m1.562 ms - 2107[0m
+[0mGET /list [31m500 [0m1.937 ms - 2107[0m
+[0mGET /list [31m500 [0m1.503 ms - 2107[0m
+[0mGET / [32m200 [0m0.820 ms - 962[0m
+[0mGET / [32m200 [0m0.561 ms - 962[0m
+[0mGET / [36m304 [0m0.755 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.323 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m1.564 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.895 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.369 ms - -[0m
+[0mGET /list [31m500 [0m1.518 ms - 2107[0m
+[0mGET /list [31m500 [0m2.116 ms - 2202[0m
+[0mGET /list [31m500 [0m2.188 ms - 2218[0m
+[0mGET /list [31m500 [0m2.164 ms - 2218[0m
+[0mGET /list [31m500 [0m1.934 ms - 2218[0m
+[0mGET /list [31m500 [0m1.517 ms - 2218[0m
+[0mGET /list [31m500 [0m1.672 ms - 2218[0m
+[0mGET /list [31m500 [0m1.667 ms - 2218[0m
+[0mGET /list [31m500 [0m1.957 ms - 2218[0m
+[0mGET /list [31m500 [0m1.622 ms - 2218[0m
+[0mGET /list [31m500 [0m6.493 ms - 2218[0m
+[0mGET /list [31m500 [0m1.541 ms - 2218[0m
+[0mGET /list [31m500 [0m2.070 ms - 2214[0m
+[0mGET / [32m200 [0m0.756 ms - 962[0m
+
+> blogger@0.0.0 start /home/bitnami/blogger
+> node ./bin/www
+
+/home/bitnami/blogger/app_server/models/blogs.js:7
+    title: {type: String, required: true},
+                  ^
+
+ReferenceError: moment is not defined
+    at Object.<anonymous> (/home/bitnami/blogger/app_server/models/blogs.js:7:19)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/bitnami/blogger/app_server/models/db.js:53:1)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! blogger@0.0.0 start: `node ./bin/www`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the blogger@0.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/bitnami/.npm/_logs/2019-03-06T00_24_25_501Z-debug.log

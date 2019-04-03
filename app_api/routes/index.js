@@ -9,20 +9,10 @@ var blogs = require('../models/blogs');
 var blog = new blogs.blogModel();
 
 // REST API //
-router.post('/api/blogs/:blogid', ctrlBlog.blogCreate);
-router.get('/api/blogsList', ctrlBlog.list);
-router.get('/api/blogs/:blogid', ctrlBlog.blogReadOne);
-router.put('/api/blogs/:blogid', ctrlBlog.blogUpdateOne);
-router.delete('/api/blogs/:blogid', ctrlBlog.blogDeleteOne);
-
-
-/* Setup routes to pages 
-router.get('/', ctrlBlog.index);
-router.get('/list', ctrlBlog.list);
-router.get('/add', ctrlBlog.add);
-router.get('/login', ctrlBlog.login);
-router.get('/edit', ctrlBlog.edit);
-router.get('/del', ctrlBlog.del);
-*/
+router.get('/blogs', ctrlBlog.blogList);
+router.post('/blogs', ctrlBlog.blogCreate);
+router.get('/blogs/:id', ctrlBlog.blogReadOne);
+router.put('/blogs/:id', ctrlBlog.blogUpdateOne);
+router.delete('/blogs/:id', ctrlBlog.blogDeleteOne);
 
 module.exports = router;
