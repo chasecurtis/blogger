@@ -8,7 +8,7 @@ var db = require('../../app_api/models/db');
 // Include Blogs Model
 var blogs = require('../../app_api/models/blogs');
 var apiOptions = {
-	server: "http://localhost:3000"
+	server: "http://localhost"
 	};
 
 /* GET home page */
@@ -36,7 +36,8 @@ module.exports.list = function(req, res){
 
 /* Render the blogs list page */
 var renderListPage = function(req, res, responseBody){
-    res.render('list', {
+    	console.log("Inside view controller " + responseBody);
+	res.render('list', {
         title: 'Blog List',
         pageHeader: {
             title: 'Blog List'
@@ -44,49 +45,22 @@ var renderListPage = function(req, res, responseBody){
         blogs: responseBody
     });
 };          
-
-/* Blog Show */
-module.exports.edit = function(req, res) {
-    var requestOptions, path;
-    path = "/api/blogs/" + req.params.id;
-    requestOptions = {
-        url : apiOptions.server + path,
-        method : "GET",
-        json : {}
-    }; 
-    request(
-        requestOptions,
-        function(err, response, body) {
-                renderShowPage(req, res, body);
-	}
-    );
-};
-
-/* Render the blog show page */
-var renderShowPage = function(req, res, responseBody){
-    res.render('blogShow', {
-        title: 'Blog Info',
-        pageHeader: {
-                title: 'Blog Info'
-        },
-        blogs: responseBody
-    });
-};     
-
-              
+    
 /* GET add page */
-module.exports.add = function(req, res) {
+module.exports.addGetBlog = function(req, res) {
  	res.render('add', { title: 'Blog Add'});
 };
 
 /* Blog Add Post */
-module.exports.addPost = function(req, res){
+module.exports.addPostBlog = function(req, res){
     var requestOptions, path, postdata;
     path = '/api/blogs/';
 
     postdata = {
-        bookTitle: req.body.bookTitle,
-        bookAuthor: req.body.bookAuthor
+        title: req.body.title,
+        author: req.body.author,
+	created: Date.now(),
+	content: req.body.content 
     }; 
 
     requestOptions = {
@@ -107,45 +81,82 @@ module.exports.addPost = function(req, res){
     ); 
 };                    
 
+
 /* Blog Edit */
-module.exports.edit = function(req, res) {
+module.exports.editGetBlog = function(req, res) {
     var requestOptions, path;
+    console.log("Getting edit page with id: " + req.params.id);
     path = "/api/blogs/" + req.params.id;
     requestOptions = {
         url : apiOptions.server + path,
         method : "GET",
         json : {}
-    }; 
+    };
     request(
         requestOptions,
         function(err, response, body) {
+	  if(err) {
+	     console.log(err);
+	  } else {
+	     console.log(response.statusCode);
                 renderEditPage(req, res, body);
-        }
+	}
+      }	
     );
 };
+module.exports.editPutBlog = function (req, res){
+	console.log("Updating blog " + req.params.id);
+	var requestOptions, path, postdata;
+	path = "/api/blogs/" + req.params.id;
 
+	postdata = {
+		title: req.body.title,
+		author: req.body.author,
+		content: req.body.content
+	};
 
-/* Render the book edit page */
-var renderEditPage = function(req, res, responseBody){
+	requestOptions = {
+		url: apiOptions.server + path,
+		method: "PUT",
+		json: postdata
+	};
+	
+	request (
+		requestOptions,
+		function(err, response, body) {
+			if(!err && response.statusCode === 201) {
+				res.redirect('/list');
+			} else {
+				_showError (req, res, response.statusCode);
+			}
+		}
+	);
+};	              
+
+var renderEditPage = function(req, res, blogEditRes){
     res.render('edit', {
-        title: 'Edit Blog',
         pageHeader: {
-            title: 'Edit Blog'
-        },
-        blogs: responseBody
+            title: 'Blog List'
+	},
+	blogEditRes: blogEditRes,
+	title: blogEditRes.title,
+	created: blogEditRes.created,
+	author: blogEditRes.author,
+	content: blogEditRes.content,
+	id: blogEditRes._id
     });
-};
-
+}; 
 
 /* Blog Edit Post */
-module.exports.editPost = function(req, res){
+module.exports.editPutBlog = function(req, res){
     var requestOptions, path, postdata;
-    var id = req.params.id;
-    path = '/api/blogs/' + id;
+    var blogid = req.params.id;
+    path = '/api/blogs/' + blogid;
 
     postdata = {
         title: req.body.title,
-        author: req.body.author
+        author: req.body.author,
+	content: req.body.content
     };
 
     requestOptions = {
@@ -165,45 +176,53 @@ module.exports.editPost = function(req, res){
         }
     );
 };
-        
-/* GET edit page */
-module.exports.edit = function(req, res) {
-    res.render('edit', {title: 'Edit Blog'});
-};
 
-/* Blog Delete */
-module.exports.del = function(req, res) {
-    var requestOptions, path;
-    path = "/api/blogs/" + req.params.id;
-    requestOptions = {
+/* Blog Delete Post */
+module.exports.deleteGetBlog = function(req, res) {
+   var requestOptions, path;
+   path = "/api/blogs/" + req.params.id;
+    requestOptions = {       
         url : apiOptions.server + path,
         method : "GET",
         json : {}
     };
-    request(
+        request(
 	requestOptions,
         function(err, response, body) {
-            renderDeletePage(req, res, body);
-        }
-    );
+	  if(err) {
+	    console.log(err);
+	  }
+	  else if (response.statusCode === 200) {
+	    console.log(body)
+            renderDeleteBlog(req, res, body);
+          }
+	  else {
+	    console.log(response.statusCode);
+	  }	
+   });
 };
 
 /* Render the blogs delete page */
-var renderDeletePage = function(req, res, responseBody){
+var renderDeleteBlog = function(req, res, destructBlog){
         res.render('del', {
-        title: 'Delete Blog',
         pageHeader: {
                 title: 'Delete Blog'
         },
-        blogs: responseBody
+        destructBlog: destructBlog,
+	id: destructBlog._id,
+	title: destructBlog.title,
+	created: destructBlog.created,
+	author: destructBlog.author,
+	content: destructBlog.content
     });
 };
 
-/* Blog Delete Post */
-module.exports.deletePost = function(req, res){
+
+/* blogDelete method  DELETE  */
+module.exports.deleteBlog = function(req, res){
     var requestOptions, path, postdata;
-    var id = req.params.id;
-    path = '/api/blogs/' + id;
+    var blogid = req.params.id;
+    path = '/api/blogs/' + blogid;
 
     requestOptions = {
 	url : apiOptions.server + path,
@@ -211,7 +230,7 @@ module.exports.deletePost = function(req, res){
         json : {}
     };
 
-    request(
+	request(
         requestOptions,
         function(err, response, body) {
             if (response.statusCode === 204) {
@@ -221,13 +240,7 @@ module.exports.deletePost = function(req, res){
             }
         }
     );
-};
-
-/* GET delete page */
-module.exports.del = function(req, res) {
-    res.render('del', {title: 'Delete Blog'});
-};
-
+};               
 /* GET login page */
 module.exports.login = function(req, res) {
     res.render('login', { title: 'Login'});

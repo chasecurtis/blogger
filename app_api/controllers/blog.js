@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 var request = require('request');
 var apiOptions = {
-	server: "http://localhost:3000"
+	server: "http://localhost"
 	};
 // Include Mongoose DB
 var db = require('../models/db');
@@ -17,15 +17,19 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.blogList = function (req, res) {
+	console.log("Getting blogs list");
 	Blog.find().exec(function (err, results) {
 		if (!results) {
 			sendJSONresponse (res, 404, {
 				"message" : "No blogs found"
 		});
+		return;
 		} else if (err) {
+			console.log(err);
 			sendJSONresponse (res, 404, err);
 			return;
 		}
+		console.log(results);
 		sendJSONresponse (res, 200, buildBlogList (req, res, results));
 	});
 };
@@ -38,14 +42,14 @@ var buildBlogList = function (req, res, results) {
 			created: obj.created,
 			author: obj.author,
 			content: obj.content,
-			id: obj.id
+			id: obj._id
 		});
 	});
 	return blogs;
 };
 
 /* POST a new blog */
-module.exports.blogCreate = function (req, res) {
+module.exports.createBlog = function (req, res) {
 	console.log(req.body);
 	Blog
 		.create({
@@ -53,25 +57,25 @@ module.exports.blogCreate = function (req, res) {
 	created: req.body.created,
 	author: req.body.author,
 	content: req.body.content
-	}, function(err, blog) {
+	}, function(err, Blog) {
 	if (err) {
 		console.log(err);
 		sendJSONresponse(res, 400, err);
 		} else {
-		console.log(blog)	
-		sendJSONresponse(res, 201, blog);
+		console.log(Blog)	
+		sendJSONresponse(res, 201, Blog);
 		}
 	}
-);
+	);
 };
 
 /* GET a single blog given ID */
-module.exports.blogReadOne = function (req, res) {
+module.exports.loadBlog= function (req, res) {
 	if(req.params && req.params.id) {
 	Blog	
 		.findById(req.params.id)
-		.exec(function(err, blog) {
-			if(!blog){
+		.exec(function(err, Blog) {
+			if(!Blog){
 			sendJSONresponse(res, 404, {"message" : "blogid not found"});
 			return;
 			} else if (err) {
@@ -79,8 +83,8 @@ module.exports.blogReadOne = function (req, res) {
 			sendJSONresponse(res, 404, err);
 			return;
 			}
-			console.log(blog);
-			sendJSONresponse(res, 200, blog);
+			console.log(Blog);
+			sendJSONresponse(res, 200, Blog);
 			});		
 	}else {
 	console.log('No blogid specified');
@@ -91,7 +95,7 @@ module.exports.blogReadOne = function (req, res) {
 
 
 /* PUT (update) one blog entry given ID */
-module.exports.blogUpdateOne = function(req, res) {
+module.exports.updateBlog = function(req, res) {
     console.log("Updating a blog entry with id of " + req.params.id);
     console.log(req.body);
     Blog
@@ -109,12 +113,10 @@ module.exports.blogUpdateOne = function(req, res) {
 };   
 
 /* DELETE one blog given ID */
-module.exports.blogDeleteOne = function(req, res) {
+module.exports.deleteBlog= function(req, res) {
     console.log("Deleting blog entry with id of " + req.params.id);
     console.log(req.body);
-	Blog 
-        .findByIdAndRemove(req.params.id)
-        .exec (
+	Blog.findByIdAndRemove(req.params.id).exec (
             function(err, response) {
                 if (err) {
                             sendJSONresponse(res, 404, err);

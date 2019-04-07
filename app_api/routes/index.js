@@ -5,14 +5,12 @@ var ctrlBlog = require('../controllers/blog');
 var db = require('../models/db');
 // Include blogs schema path
 var blogs = require('../models/blogs');
-// Define blog schema
-var blog = new blogs.blogModel();
 
 // REST API //
 router.get('/blogs', ctrlBlog.blogList);
-router.post('/blogs', ctrlBlog.blogCreate);
-router.get('/blogs/:id', ctrlBlog.blogReadOne);
-router.put('/blogs/:id', ctrlBlog.blogUpdateOne);
-router.delete('/blogs/:id', ctrlBlog.blogDeleteOne);
+router.post('/blogs', ctrlBlog.createBlog);
+router.get('/blogs/:id', ctrlBlog.loadBlog);
+router.put('/blogs/:id', ctrlBlog.updateBlog);
+router.delete('/blogs/:id', ctrlBlog.deleteBlog);
 
 module.exports = router;

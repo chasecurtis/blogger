@@ -12,13 +12,6 @@ mongoose.connection.on('connected', function ()
 	console.log('Mongoose connected to ' + dbURI);
 });
 
-//var blogModel = mongoose.model('blog');
-
-/*blogModel.find({}).sort({date: 'desc'}).exec(function(err)
-{
-    console.log("Can't find blog");
-});*/ 
-
 // Monitor and report error connecting to database
 mongoose.connection.on('error', function (err) 
 {

@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+ <head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='../../stylesheets/style.css' />
+  <link rel='stylesheet' href='/css/bootstrap.min.css'/>
+
  </head>
-  <body>
-<div class="container">
-<% include ./partials/nav %>    
-<p></p>
-<h4><%= title %></h4>
-    <p>Page under construction!</p>
-</div> <!-- container -->
-  </body>
-<script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+
+ <body>
+     <div class="container">
+     <% include ./partials/nav %>
+     <p></p>
+      <div class="card border-primary" style="width: 50%">
+        <form method="post" action="/edit/<%=blogEditRes._id %>" style="padding: 20px">
+            <div class="form-group">
+                <label for="blogTitle" class="text-primary">Blog Title</label>
+                <input class="form-control" id="title" name="title" value="<%= blogEditRes.title %>">
+		<label for="author" class="text-primary">Author</label>
+                <textarea class="form-control" id="author" rows="2" name"author" readonly><%=blogEditRes.author %></textarea>
+                <label for="blogText" class="text-primary">Blog Text</label>
+                <textarea class="form-control" id="content" rows="5" name="content"><%= blogEditRes.content %></textarea>
+	<p></p>
+                <a href="/list" class="btn btn-secondary" role="button">Cancel</a>
+		<input type="submit" class="btn btn-primary" value="Save Blog">
+            </div>
+        </form>
+        </div>
+    </div> <!-- container -->
+   </body>
 </html>
 

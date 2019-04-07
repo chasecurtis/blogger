@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
- </head>
-  <body>
-<div class="container">
-<% include ./partials/nav %>    
-<p></p>
-<h4><%= title %></h4>
-    <p>Page under construction!</p>
-</div> <!-- container -->
-  </body>
-<script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='../../stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
+</head>
+
+<body>
+    <div class="container">
+        <% include ./partials/nav %>
+        <p></p>
+        <div class="card border-primary" style="width: 50%">
+            <form method="post" action="/del/<%=destructBlog._id %>" style="padding: 2
+0 px">
+                <div class="form-group">
+                    <label for="summary" class="text-primary">Blog Title</label>
+                    <input class="form-control" id="title" name="title" value="<%=title %>" readonly>
+                    <label for="author" class="text-primary">Author</label>
+                    <input class="form-control" id="author" name"author" value="<%=author %>" readonly>
+                    <label for="content" class="text-primary">Blog Text</label>
+                    <textarea class="form-control" id="blogText" rows="5" name="content" readonly><%=content %></textarea>
+                    <p></p>
+                    <a href="/list" class="btn btn-primary" role="button">Cancel</a>
+                    <input type="submit" class="btn btn-danger" value="Delete Blog">
+
+                </div>
+            </form>
+        </div>
+
+    </div> <!-- container -->
+</body>
+
 </html>
 
