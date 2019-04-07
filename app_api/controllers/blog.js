@@ -40,7 +40,7 @@ var buildBlogList = function (req, res, results) {
 		blogs.push({
 			title: obj.title,
 			created: obj.created,
-			author: obj.author,
+			//author: obj.author, -- add/update not working as desired
 			content: obj.content,
 			id: obj._id
 		});
@@ -54,8 +54,8 @@ module.exports.createBlog = function (req, res) {
 	Blog
 		.create({
 	title: req.body.title,
-	created: req.body.created,
-	author: req.body.author,
+	created: moment().format('L'),
+	//author: req.body.author, -- add/update not working as desired
 	content: req.body.content
 	}, function(err, Blog) {
 	if (err) {
@@ -93,26 +93,27 @@ module.exports.loadBlog= function (req, res) {
 	}
 };
 
-
-/* PUT (update) one blog entry given ID */
-module.exports.updateBlog = function(req, res) {
+/* update one blog given ID */
+module.exports.updateBlog = function (req, res) {
     console.log("Updating a blog entry with id of " + req.params.id);
     console.log(req.body);
     Blog
-	.findOneAndUpdate(
-	     { _id: req.params.id },
- 	     { $set: {"title": req.body.title, "author": req.body.author, "content": req.body.content}}
-	     ,function(err, response) {
-	         if (err) {
-	  	         sendJSONresponse(res, 400, err);
-	         } else {
-		        sendJSONresponse(res, 201, response);
-	        }
-	    }
-	);    
-};   
+        .findOneAndUpdate({
+            _id: req.params.id
+        }, {
+            $set: {
+                "title": req.body.title,
+                "content": req.body.content
+            }
+        },function (err, response) {
+            if (err) {
+                sendJSONresponse(res, 400, err);
+            } else {
+                sendJSONresponse(res, 201, response);
+            }
+        });
+};
 
-/* DELETE one blog given ID */
 module.exports.deleteBlog= function(req, res) {
     console.log("Deleting blog entry with id of " + req.params.id);
     console.log(req.body);

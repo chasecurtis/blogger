@@ -48,7 +48,39 @@ var renderListPage = function(req, res, responseBody){
     
 /* GET add page */
 module.exports.addGetBlog = function(req, res) {
- 	res.render('add', { title: 'Blog Add'});
+    var requestOptions, path;
+    console.log("Loading add blog page");
+    path = "/api/blogs/";
+    requestOptions = {
+        url : apiOptions.server + path,
+        method : "GET",
+        json : {}
+    };
+    request(
+        requestOptions,
+        function(err, response, body) {
+	  if(err) {
+	     console.log(err);
+	  } else {
+	     console.log(response.statusCode);
+                renderAddPage(req, res, body);
+	}
+      }	
+    );
+};
+
+var renderAddPage = function(req, res, blogAddRes){
+	res.render('add', {         
+	pageHeader: {
+                title: 'Blog Add'
+        },
+        blogAddRes: blogAddRes,
+	id: blogAddRes._id,
+	title: blogAddRes.title,
+	created: blogAddRes.created,
+	author: blogAddRes.author,
+	content: blogAddRes.content
+   });
 };
 
 /* Blog Add Post */
@@ -59,8 +91,8 @@ module.exports.addPostBlog = function(req, res){
     postdata = {
         title: req.body.title,
         author: req.body.author,
-	created: Date.now(),
-	content: req.body.content 
+	created: req.body.created,
+	content: req.body.content
     }; 
 
     requestOptions = {

@@ -4,30 +4,28 @@
 <div class="card border-primary" style="width: 50%">
     <div class="card-header">
         <div class="row">
-<h5 class ="card-title"><%=blog.title%></h5>
-<div class="col-sm">
-<p class="card-text">Author: <%=blog.author%></p></div>
-
-
+            <h5 class="card-title"> <%=blog.title%></h5>
         </div>
-	    </div>
-	    <div class="card-body">
-			        <div class="col-sm"><p class="card-text">Date posted: <%=blog.created%></p></div>
-
-        <p class="card-text"><%=blog.content%></p>
-	</div>
-    <div class="card-footer">
-        <div class = "col-sm">
-           <ul class="nav justify-content-end nav-pills card-header-pills">
-             <li class="nav-item">
-                 <a class="nav-link" href="/edit/<%= blog.id %>"> <i class="fa fa-pencil-square-o"></i></a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="/del/<%= blog.id %>"> <i class="fa fa-trash"></i></a>
-             </li>
-           </ul>
-	</div>	
+	<font size="2" style="text-align:left">Date: <%=blog.created%></font>
     </div>
-</div>
-<p> <!-- card -->
+    <div class="card-body">
+        <div class="col-sm">
+        </div>
+        <p class="card-text"><%=blog.content%></p>
+    </div>
+    <div class="card-footer">
+    <ul>
+        <div class="nav justify-content-end nav-pills card-header-pills">
+		<li class="nav-item">
+                    <a class="nav-link" href="/edit/<%= blog.id %>"> <i class="fa fa-pencil-square-o"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/del/<%= blog.id %>"> <i class="fa fa-trash"></i></a>
+                </li>
+        </div>
+     </ul>
+        </div>
+    </div>
+<p>
+    <!-- card -->
 

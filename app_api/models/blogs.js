@@ -6,8 +6,8 @@ var Schema = mongoose.Schema,
 var Blog = new Schema({
     id: ObjectId,
     title: {type: String, required: true},
-    created:{type: Date, default: Date.now},
-    author: {type: String, required: true},
+    created:{type: String, required: true},
+    //author: String, -- add/update not working as desired
     content: {type: String, required: true}
 });
 
