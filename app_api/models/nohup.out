@@ -3705,3 +3705,144 @@ Mongoose connected to mongodb://localhost/blogger
 [0mGET /js/jquery.min.js [32m200 [0m4.686 ms - 86927[0m
 [0mGET /css/bootstrap.min.css [32m200 [0m0.971 ms - 153182[0m
 [0mGET /favicon.ico [33m404 [0m0.813 ms - 1466[0m
+
+> blogger@0.0.0 start /home/bitnami/blogger
+> node ./bin/www
+
+(node:3463) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+Mongoose connected to mongodb://bloggerAdmin:boneDestroyer95!@localhost/blogger
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5caa7fcfdaf0da796064264b,
+    title: 'woof',
+    created: '04/07/2019',
+    content: 'meow',
+    __v: 0 },
+  { _id: 5caa7ff9daf0da796064264c,
+    title: 'we\'re going to meet the wizard...',
+    created: '04/07/2019',
+    content: 'the wonderful wizard of oz.',
+    __v: 0 },
+  { _id: 5cab8bcde1f7bb0d1857383f,
+    title: 'soo late',
+    created: '04/08/2019',
+    content: 'thanks for being so generous with grading. ',
+    __v: 0 } ]
+[0mGET /api/blogs [32m200 [0m31.135 ms - 363[0m
+Inside view controller [object Object],[object Object],[object Object]
+[0mGET /list [36m304 [0m55.010 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.497 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.723 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.591 ms - -[0m
+[0mGET /css/fontawesome-all.css [36m304 [0m1.509 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m1.178 ms - 1466[0m
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5caa7fcfdaf0da796064264b,
+    title: 'woof',
+    created: '04/07/2019',
+    content: 'meow',
+    __v: 0 },
+  { _id: 5caa7ff9daf0da796064264c,
+    title: 'we\'re going to meet the wizard...',
+    created: '04/07/2019',
+    content: 'the wonderful wizard of oz.',
+    __v: 0 },
+  { _id: 5cab8bcde1f7bb0d1857383f,
+    title: 'soo late',
+    created: '04/08/2019',
+    content: 'thanks for being so generous with grading. ',
+    __v: 0 } ]
+[0mGET /api/blogs [32m200 [0m3.297 ms - 363[0m
+Inside view controller [object Object],[object Object],[object Object]
+[0mGET /list [36m304 [0m7.483 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.483 ms - -[0m
+[0mGET /css/fontawesome-all.css [36m304 [0m1.202 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.047 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.823 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.960 ms - 1466[0m
+[0mGET / [36m304 [0m1.971 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.413 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m1.608 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m1.407 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.916 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.837 ms - 1466[0m
+[0mGET /login [36m304 [0m1.957 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m1.090 ms - 1466[0m
+[0mGET /favicon.ico [33m404 [0m0.996 ms - 1466[0m
+[0mGET / [32m200 [0m1.345 ms - 870[0m
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5caa7fcfdaf0da796064264b,
+    title: 'woof',
+    created: '04/07/2019',
+    content: 'meow',
+    __v: 0 },
+  { _id: 5caa7ff9daf0da796064264c,
+    title: 'we\'re going to meet the wizard...',
+    created: '04/07/2019',
+    content: 'the wonderful wizard of oz.',
+    __v: 0 },
+  { _id: 5cab8bcde1f7bb0d1857383f,
+    title: 'soo late',
+    created: '04/08/2019',
+    content: 'thanks for being so generous with grading. ',
+    __v: 0 } ]
+[0mGET /api/blogs [32m200 [0m4.604 ms - 363[0m
+Inside view controller [object Object],[object Object],[object Object]
+[0mGET /list [36m304 [0m8.624 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.421 ms - -[0m
+[0mGET /css/fontawesome-all.css [36m304 [0m1.024 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.057 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.527 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.770 ms - 1466[0m
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5caa7fcfdaf0da796064264b,
+    title: 'woof',
+    created: '04/07/2019',
+    content: 'meow',
+    __v: 0 },
+  { _id: 5caa7ff9daf0da796064264c,
+    title: 'we\'re going to meet the wizard...',
+    created: '04/07/2019',
+    content: 'the wonderful wizard of oz.',
+    __v: 0 },
+  { _id: 5cab8bcde1f7bb0d1857383f,
+    title: 'soo late',
+    created: '04/08/2019',
+    content: 'thanks for being so generous with grading. ',
+    __v: 0 } ]
+[0mGET /api/blogs [32m200 [0m2.959 ms - 363[0m
+Inside view controller [object Object],[object Object],[object Object]
+[0mGET /list [36m304 [0m6.140 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.477 ms - -[0m
+[0mGET /css/fontawesome-all.css [36m304 [0m2.004 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.642 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m1.113 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.791 ms - 1466[0m
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5caa7fcfdaf0da796064264b,
+    title: 'woof',
+    created: '04/07/2019',
+    content: 'meow',
+    __v: 0 },
+  { _id: 5caa7ff9daf0da796064264c,
+    title: 'we\'re going to meet the wizard...',
+    created: '04/07/2019',
+    content: 'the wonderful wizard of oz.',
+    __v: 0 },
+  { _id: 5cab8bcde1f7bb0d1857383f,
+    title: 'soo late',
+    created: '04/08/2019',
+    content: 'thanks for being so generous with grading. ',
+    __v: 0 } ]
+[0mGET /api/blogs [32m200 [0m2.581 ms - 363[0m
+Inside view controller [object Object],[object Object],[object Object]
+[0mGET /list [36m304 [0m5.330 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.262 ms - -[0m
+[0mGET /css/fontawesome-all.css [36m304 [0m0.440 ms - -[0m
+[0mGET /js/jquery.min.js [36m304 [0m0.412 ms - -[0m
+[0mGET /js/bootstrap.min.js [36m304 [0m0.309 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.795 ms - 1466[0m
