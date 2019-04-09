@@ -9,7 +9,7 @@ require('./app_api/models/db');
 require('./app_api/models/blogs');
 
 var app = express();
-app.set('view engine', 'ejs'); //-- not using view engine
+//app.set('view engine', 'ejs'); //-- not using view engine
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

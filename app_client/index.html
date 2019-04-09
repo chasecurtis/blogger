@@ -4,9 +4,10 @@
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-route.min.js"></script>  
     <script src="/lib/angular-ui-router.min.js"></script>    
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/fontawesome-all.css">
   </head>
   <body>
   
@@ -30,24 +31,23 @@
       <h4>{{vm.message}}</h4>
 	</div>
     </script>
+<!-- END HOME screen -->
+
 <!-- LIST screen -->      
     <script type="text/ng-template" id="pages/list.html">
       <p></p>
       <div ng-repeat="blog in vm.blogs">
       <div class="card border-primary" style="width: 50%"> 
-            <div class="card-header">
-            </div>
-            <div class="card-body">
-                <h5 class ="card-title">{{blog.blogTitle}}</h5>
-            </div>
+            <div class="card-header">{{blog.blogTitle}}</div>
+            <div class="card-body">{{blog.created}}{{blog.blogText}}{{vm.foo}}</div>
             <div class="card-footer">
                 <div class = "col-sm">
                    <ul class="nav justify-content-end nav-pills card-header-pills">
                      <li class="nav-item">
-                         <a class="nav-link" href="#/edit/{{blog._id}}" <i class="fas fa-edit"</i></a>
+                         <a class="nav-link" href="#/edit/{{blog.id}}"><i class="fa fa-pencil-square-o"></i></a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="#/delete/{{blog._id}}"><i class="fas fa-trash-alt"></i></a>
+                         <a class="nav-link" href="#/delete/{{blog.id}}"><i class="fa fa-trash"></i></a>
                      </li>
                    </ul>
             </div>	
@@ -56,10 +56,12 @@
       <p>               
       </div>
     </script>
+<!-- END LIST screen -->
 
-<!-- ADD screen -->
+<! -- ADD SCREEN -->
 <script type="text/ng-template" id="pages/add.html">
-	<div class="card border-primary" style="width: 50%; margin-top: 64px;">			<form name="addForm" ng-submit="vm.submit()" ng-controller="AddController" style="padding: 20px">
+	<div class="card border-primary" style="width: 50%; margin-top: 64px;">			
+		<form name="addForm" ng-submit="vm.submit()" ng-controller="AddController" style="padding: 20px">
 			<div class="form-group">
 				<label for="summary" class="text-primary">Blog Title</label>
                 <input class="form-control" id="blogTitle" name="blogTitle"> 
@@ -72,9 +74,9 @@
 	</form>
 	</div>
 </script>
+<!-- END ADD screen -->
 		
-
-<!-- EDIT screen --> 
+<!-- EDIT screen -->
     <script type="text/ng-template" id="pages/edit.html">
         <p></p>
         <div class="card border-primary" style="width: 50%">  
@@ -91,6 +93,7 @@
         </form> 
         </div>
     </script>  
+<!-- END EDIT screen -->
 
 <!-- DELETE screen -->
     <script type="text/ng-template" id="pages/delete.html">
@@ -109,8 +112,7 @@
         </form> 
         </div>
     </script>  
-
-
+<!-- END DELETE screen -->
 
     <!-- Angular View (dynamic content goes here) -->  
     <div ng-view></div>

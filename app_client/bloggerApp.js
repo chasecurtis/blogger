@@ -30,7 +30,7 @@ app.config(function($routeProvider) {
 		.when('/delete/:id', {
 			templateUrl: 'pages/delete.html',
 			controller: 'DeleteController',
-			controllerAs: 'vm"
+			controllerAs: 'vm'
 		})
 
 		.otherwise({redirectTo: '/'});
@@ -92,8 +92,9 @@ app.controller('AddController', [ '$http', '$location', function AddController($
 }]);
 
 // READ
-app.controller('ListController', function ListController($http) {
+app.controller('ListController', [ '$http', function ListController($http) {
 	var vm = this;
+	vm.foo = "hi testing";
 	vm.pageHeader = {
 		title: "Blog List"
 	};
@@ -103,7 +104,7 @@ app.controller('ListController', function ListController($http) {
 		}).error(function (e) {
 		vm.message = "Could not fetch list of blogs.";
 	});
-});
+}]);
 
 // UPDATE
 app.controller('EditController', [ '$http', '$routeParams', '$location', function EditController($http, $routeParams, $location) {
@@ -134,7 +135,7 @@ app.controller('EditController', [ '$http', '$routeParams', '$location', functio
 		updateBlogById($http, vm.id, data).success(function(data) {
 			vm.message = "Blog data updated!";
 			// State Provider
-			$location.path('list').replace();
+			$location.path('/list').replace();
 		}).error(function (e) {
 			vm.message = "Could not update blog with given id: " + vm.id;
 		});
@@ -142,7 +143,7 @@ app.controller('EditController', [ '$http', '$routeParams', '$location', functio
 }]); 
 
 // DELETE
-app.Controller('DeleteController', [ '$http', '$routeParams', '$location', function DeleteController($http, $routeParams, $location) {
+app.controller('DeleteController', [ '$http', '$routeParams', '$location', function DeleteController($http, $routeParams, $location) {
 	var vm = this;
 	vm.blog = {};
 	vm.id = $routeParams.id;
@@ -152,7 +153,7 @@ app.Controller('DeleteController', [ '$http', '$routeParams', '$location', funct
 	
 	getBlogById($http, vm.id).success(function(data) {
 		vm.blog = data;
-		vm.message "Blog data found!";
+		vm.message = "Blog data found!";
 	}).error(function (e) {
 		vm.message = "Could not fetch blog with given id: " + vm.id;
 	});

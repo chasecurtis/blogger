@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.22",
-    "angular": "^1.7.7",
+    "angular": "^1.5.6",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "cookie-parser": "~1.4.3",
