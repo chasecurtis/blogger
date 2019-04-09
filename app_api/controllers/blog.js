@@ -38,10 +38,10 @@ var buildBlogList = function (req, res, results) {
 	var blogs = [];
 	results.forEach(function (obj) {
 		blogs.push({
-			title: obj.title,
+			blogTitle: obj.blogTitle,
 			created: obj.created,
-			//author: obj.author, -- add/update not working as desired
-			content: obj.content,
+			blogAuthor: obj.blogAuthor, //-- add/update not working as desired
+			blogText: obj.blogTex,
 			id: obj._id
 		});
 	});
@@ -53,10 +53,10 @@ module.exports.createBlog = function (req, res) {
 	console.log(req.body);
 	Blog
 		.create({
-	title: req.body.title,
+	blogTitle: req.body.blogTitle,
 	created: moment().format('L'),
-	//author: req.body.author, -- add/update not working as desired
-	content: req.body.content
+	blogAuthor: req.body.blogAuthor, //-- add/update not working as desired
+	blogText: req.body.blogText
 	}, function(err, Blog) {
 	if (err) {
 		console.log(err);

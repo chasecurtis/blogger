@@ -1,11 +1,11 @@
-var app = angular.module('bloggerApp', [ngRoute]);
+var app = angular.module('bloggerApp', ['ngRoute']);
 
 /* Router Provider */
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'pages/home.html',
-			controller: 'HomeController',
+			templateUrl: 'pages/index.html',
+			controller: 'IndexController',
 			controllerAs: 'vm'
 		})
 		
@@ -21,7 +21,7 @@ app.config(function($routeProvider) {
 			controllerAs: 'vm'
 		})
 		
-		.when('/edit/:id' {
+		.when('/edit/:id', {
 			templateUrl: 'pages/edit.html',
 			controller: 'EditController',
 			controllerAs: 'vm'
@@ -34,7 +34,8 @@ app.config(function($routeProvider) {
 		})
 
 		.otherwise({redirectTo: '/'});
-	});
+	}
+);
 
 /* REST Web API functions */
 function createBlog($http) {
@@ -58,7 +59,7 @@ function deleteBlogById($http, id) {
 }
 
 /** Controllers **/
-app.controller('HomeController', function HomeController() {
+app.controller('IndexController', function IndexController() {
 	var vm = this;
 	vm.pageHeader = {
 		title: "My Blog"
@@ -67,7 +68,7 @@ app.controller('HomeController', function HomeController() {
 });
 
 // CREATE
-app.controller('AddController', [ '$http', '$location', function AddController() {
+app.controller('AddController', [ '$http', '$location', function AddController($http, $location) {
 	var vm = this;
 	vm.blog = {};
 	vm.pageHeader = {
@@ -77,9 +78,9 @@ app.controller('AddController', [ '$http', '$location', function AddController()
 	// Define ViewModel's function, submit, does with data in form 
 	vm.submit = function () {
 		var data = vm.blog;
-		data.blogTitle = userForm.blogTitle.value;
-		data.blogAuthor = userForm.blogAuthor.value;
-		data.blogText = userForm.blogText.value;
+		data.blogTitle = addForm.blogTitle.value;
+		data.blogAuthor = addForm.blogAuthor.value;
+		data.blogText = addForm.blogText.value;
 	
 		createBlog($http, data).success(function(data) {
 			vm.message = "Blog create successfully!";
@@ -88,7 +89,7 @@ app.controller('AddController', [ '$http', '$location', function AddController()
 			vm.message = "Could not add blog: " + addForm.blogTitle.text + " " + addForm.blogText.text;
 		});
 	}
-});
+}]);
 
 // READ
 app.controller('ListController', function ListController($http) {
@@ -105,7 +106,7 @@ app.controller('ListController', function ListController($http) {
 });
 
 // UPDATE
-app.controller('EditController', [ '$http', '$routeParams', '$state', function EditController($http, $routeParams, $state) {
+app.controller('EditController', [ '$http', '$routeParams', '$location', function EditController($http, $routeParams, $location) {
 	var vm = this;
 	// Start w/ blank blog
 	vm.blog = {};
@@ -126,14 +127,14 @@ app.controller('EditController', [ '$http', '$routeParams', '$state', function E
 	// Define ViewModel's function, submit, does with data in form 
 	vm.submit = function () {
 		var data = vm.blog;
-		data.blogTitle = userForm.blogTitle.value;
-		data.blogAuthor = userForm.blogAuthor.value;
-		data.blogText = userForm.blogText.value;
+		data.blogTitle = editForm.blogTitle.value;
+		data.blogAuthor = editForm.blogAuthor.value;
+		data.blogText = editForm.blogText.value;
 	
 		updateBlogById($http, vm.id, data).success(function(data) {
 			vm.message = "Blog data updated!";
 			// State Provider
-			$state.go('list');
+			$location.path('list').replace();
 		}).error(function (e) {
 			vm.message = "Could not update blog with given id: " + vm.id;
 		});
@@ -141,7 +142,7 @@ app.controller('EditController', [ '$http', '$routeParams', '$state', function E
 }]); 
 
 // DELETE
-app.Controller('DeleteController', [ '$http', '$routeParams', '$state', function DeleteController($http, $routeParams, $state) {
+app.Controller('DeleteController', [ '$http', '$routeParams', '$location', function DeleteController($http, $routeParams, $location) {
 	var vm = this;
 	vm.blog = {};
 	vm.id = $routeParams.id;
@@ -159,9 +160,9 @@ app.Controller('DeleteController', [ '$http', '$routeParams', '$state', function
 	vm.submit = function () {
 		deleteBlogById($http, vm.id).success(function(data) {
 			vm.message = "Blog deleted!";
-			$location.path('list').replace();
+			$location.path('/list').replace();
 		}).error(function (e) {
 			vm.message = "Could not delete blog with given id: " + vm.id;
 		});
 	}
-}];
+}]);

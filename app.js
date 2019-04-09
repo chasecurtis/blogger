@@ -4,28 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
 require('./app_api/models/db');
 require('./app_api/models/blogs');
 
 var app = express();
-// view engine setup
-app.set('views', path.join(__dirname, '/app_server', 'views'));
-app.set('view engine', 'ejs');
-
+app.set('view engine', 'ejs'); //-- not using view engine
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use(express.static(path.join(__dirname, 'app_client')));
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); 
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/css', express.static(__dirname + '/public/stylesheets'));
-
-app.use('/', routes);
 app.use('/api', routesApi);
 
 // catch 404 and forward to error handler
@@ -41,7 +35,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error'); // replaced .render with .send as .render only works w/ view engines 
 });
 
 module.exports = app;

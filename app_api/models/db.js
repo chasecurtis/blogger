@@ -1,4 +1,10 @@
+/** Mongoose Settings **/
 var mongoose = require('mongoose');
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+/** END Mongoose settings **/
+
 var gracefulShutdown;
 var dbURI = 'mongodb://bloggerAdmin:boneDestroyer95!@localhost/blogger';
 
