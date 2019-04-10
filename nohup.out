@@ -225,3 +225,92 @@ Inside view controller [object Object],[object Object],[object Object]
 [0mGET /js/jquery.min.js [36m304 [0m1.545 ms - -[0m
 [0mGET /css/fontawesome-all.css [36m304 [0m1.439 ms - -[0m
 [0mGET /favicon.ico [33m404 [0m0.913 ms - 1466[0m
+
+> blogger@0.0.0 start /home/bitnami/blogger
+> node ./bin/www
+
+Mongoose connected to mongodb://bloggerAdmin:boneDestroyer95!@localhost/blogger
+[0mGET / [36m304 [0m5.277 ms - -[0m
+[0mGET /lib/angular.min.js [36m304 [0m0.999 ms - -[0m
+[0mGET /lib/angular-ui-router.min.js [36m304 [0m0.698 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m1.573 ms - -[0m
+[0mGET /lib/angular-route.min.js [36m304 [0m0.528 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.290 ms - -[0m
+[0mGET /bloggerApp.js [36m304 [0m0.281 ms - -[0m
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5cad21ad8e4c1b4d3b8c05c9,
+    blogTitle: 'hi EDIT',
+    created: '04/09/2019',
+    blogAuthor: 'Chase EDIT',
+    blogText: 'bye EDIT',
+    __v: 0 },
+  { _id: 5cad235d8e4c1b4d3b8c05ca,
+    blogTitle: 'qwerty',
+    created: '04/09/2019',
+    blogAuthor: 'gerty',
+    blogText: 'birdie',
+    __v: 0 },
+  { _id: 5cae4a663e2bf55f6e267ce6,
+    blogTitle: 'asdf',
+    created: '04/10/2019',
+    blogAuthor: 'anonymous',
+    blogText: 'asdf',
+    __v: 0 } ]
+[0mGET /api/blogs [36m304 [0m23.086 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.847 ms - 5[0m
+[0mGET /favicon.ico [33m404 [0m0.566 ms - 5[0m
+Getting blogs list
+[0;36mMongoose:[0m blogs.find({}, { projection: {} })
+[ { _id: 5cad21ad8e4c1b4d3b8c05c9,
+    blogTitle: 'hi EDIT',
+    created: '04/09/2019',
+    blogAuthor: 'Chase EDIT',
+    blogText: 'bye EDIT',
+    __v: 0 },
+  { _id: 5cad235d8e4c1b4d3b8c05ca,
+    blogTitle: 'qwerty',
+    created: '04/09/2019',
+    blogAuthor: 'gerty',
+    blogText: 'birdie',
+    __v: 0 },
+  { _id: 5cae4a663e2bf55f6e267ce6,
+    blogTitle: 'asdf',
+    created: '04/10/2019',
+    blogAuthor: 'anonymous',
+    blogText: 'asdf',
+    __v: 0 } ]
+[0mGET /api/blogs [36m304 [0m3.372 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.372 ms - 5[0m
+[0mGET /favicon.ico [33m404 [0m0.507 ms - 5[0m
+[0mGET /favicon.ico [33m404 [0m0.531 ms - 5[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.797 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.436 ms - -[0m
+[0mGET /bloggerApp.js [36m304 [0m0.478 ms - -[0m
+[0mGET /lib/angular-ui-router.min.js [36m304 [0m0.326 ms - -[0m
+[0mGET / [36m304 [0m0.943 ms - -[0m
+[0mGET /lib/angular.min.js [36m304 [0m0.938 ms - -[0m
+[0mGET /lib/angular-route.min.js [36m304 [0m0.942 ms - -[0m
+[0mGET /lib/angular.min.js [36m304 [0m0.630 ms - -[0m
+[0mGET /lib/angular-route.min.js [36m304 [0m1.300 ms - -[0m
+[0mGET /lib/angular-ui-router.min.js [36m304 [0m0.956 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.866 ms - -[0m
+[0mGET /bloggerApp.js [36m304 [0m0.957 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m1.420 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.618 ms - 5[0m
+[0mGET / [32m200 [0m2.118 ms - 5927[0m
+[0mGET /bloggerApp.js [32m200 [0m0.402 ms - 4210[0m
+[0mGET /lib/angular.min.js [32m200 [0m0.611 ms - 183343[0m
+[0mGET /stylesheets/style.css [32m200 [0m1.175 ms - 209[0m
+[0mGET /lib/angular-ui-router.min.js [32m200 [0m2.233 ms - 19546[0m
+[0mGET /lib/angular-route.min.js [32m200 [0m2.429 ms - 5175[0m
+[0mGET /css/bootstrap.min.css [32m200 [0m3.480 ms - 153182[0m
+[0mGET /favicon.ico [33m404 [0m0.588 ms - 5[0m
+[0mGET / [36m304 [0m0.410 ms - -[0m
+[0mGET /lib/angular.min.js [36m304 [0m0.517 ms - -[0m
+[0mGET /lib/angular-route.min.js [36m304 [0m0.312 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.296 ms - -[0m
+[0mGET /css/bootstrap.min.css [36m304 [0m0.636 ms - -[0m
+[0mGET /lib/angular-ui-router.min.js [36m304 [0m0.591 ms - -[0m
+[0mGET /bloggerApp.js [36m304 [0m0.595 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m0.543 ms - 5[0m
