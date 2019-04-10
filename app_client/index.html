@@ -38,8 +38,8 @@
       <p></p>
       <div ng-repeat="blog in vm.blogs">
       <div class="card border-primary" style="width: 50%"> 
-            <div class="card-header">{{blog.blogTitle}}</div>
-            <div class="card-body">{{blog.created}}{{blog.blogText}}{{vm.foo}}</div>
+            <div class="card-header">{{blog.blogTitle}}  Author: {{blog.blogAuthor}}<p>{{blog.created}}</div>
+            <div class="card-body">text: {{blog.blogText}}</div>
             <div class="card-footer">
                 <div class = "col-sm">
                    <ul class="nav justify-content-end nav-pills card-header-pills">
