@@ -38,7 +38,7 @@ app.config(function($routeProvider) {
 );
 
 /* REST Web API functions */
-function createBlog($http) {
+function createBlog($http, data) {
 	return $http.post('/api/blogs', data); 
 }
 
@@ -120,19 +120,18 @@ app.controller('EditController', [ '$http', '$routeParams', '$location', functio
 	// Fetch blog data to display on edit page
 	getBlogById($http, vm.id).success(function(data) {
 		vm.blog = data;
-		vm.message = "Blog data found!";
 	}).error(function (e) {
 		vm.message = "Could not fetch blog with given id: " + vm.id;
 	});
 	
 	// Define ViewModel's function, submit, does with data in form 
 	vm.submit = function () {
-		var data = vm.blog;
+		var data = {};
 		data.blogTitle = editForm.blogTitle.value;
 		data.blogAuthor = editForm.blogAuthor.value;
 		data.blogText = editForm.blogText.value;
 	
-		updateBlogById($http, vm.id, data).success(function(data) {
+		updateBlogById($http, vm.id, data).success(function(data) 		{
 			vm.message = "Blog data updated!";
 			// State Provider
 			$location.path('/list').replace();

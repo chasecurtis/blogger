@@ -37,11 +37,14 @@
     <script type="text/ng-template" id="pages/list.html">
       <p></p>
       <div ng-repeat="blog in vm.blogs">
-      <div class="card border-primary" style="width: 50%"> 
-            <div class="card-header">{{blog.blogTitle}}  Author: {{blog.blogAuthor}}<p>{{blog.created}}</div>
-            <div class="card-body">text: {{blog.blogText}}</div>
+	<div class="card border-primary" style="width: 50%"> 
+            <div class="card-header">{{blog.blogTitle}}</div>
+            <div class="card-body">{{blog.blogText}}</div>
             <div class="card-footer">
                 <div class = "col-sm">
+		   <ul class="nav justify-content-begin">
+		   	<li class="nav-item">Posted by: {{blog.blogAuthor}} on {{blog.created}} </li>
+		   </ul>
                    <ul class="nav justify-content-end nav-pills card-header-pills">
                      <li class="nav-item">
                          <a class="nav-link" href="#/edit/{{blog.id}}"><i class="fa fa-pencil-square-o"></i></a>
@@ -63,14 +66,17 @@
 	<div class="card border-primary" style="width: 50%; margin-top: 64px;">			
 		<form name="addForm" ng-submit="vm.submit()" ng-controller="AddController" style="padding: 20px">
 			<div class="form-group">
-				<label for="summary" class="text-primary">Blog Title</label>
-                <input class="form-control" id="blogTitle" name="blogTitle"> 
+		<label for="summary" class="text-primary">Blog Title</label>
+                <input class="form-control" id="blogTitle" name="blogTitle" value="{{vm.data.blogTitle}}"> 
+		<p></p>
 		<label for="author" class="text-secondary">Author</label>
-                <input class="form-control" id="blogAuthor" name="blogAuthor"> 
+                <input class="form-control" id="blogAuthor" name="blogAuthor" value="{{vm.data.blogAuthor}}"> 
+		<p></p>
 		<label for="detail" class="text-primary">Blog Text</label>
-                <textarea class="form-control" id="blogText" name="blogText" rows="3"></textarea>
+                <textarea class="form-control" id="blogText" name="blogText" rows="3">{{vm.data.blogText}}</textarea>
             </div>
-            <input type="submit" class="btn btn-primary" value="Save">
+	    <a href="#/list" class="btn btn-secondary" role="button">Cancel</a>
+            <input type="submit" class="btn btn-primary" value="POST">
 	</form>
 	</div>
 </script>
@@ -84,12 +90,15 @@
             <div class="form-group">
                 <label for="summary" class="text-primary">Blog Title</label>
                 <input class="form-control" id="blogTitle" name="blogTitle" value="{{vm.blog.blogTitle}}">
+		<p></p>
 		<label for="author" class="text-secondary">Author</label>
                 <input class="form-control" id="blogAuthor" name="blogAuthor" value="{{vm.blog.blogAuthor}}"> 
+		<p></p>
 		<label for="detail" class="text-primary">Blog Text</label>
                 <textarea class="form-control" id="blogText" name="blogText" rows="3">{{vm.blog.blogText}}</textarea>
             </div>
-            <input type="submit" class="btn btn-primary" value="Save Blog">
+        <a href="#/list" class="btn btn-secondary" role="button">Cancel</a>    
+	<input type="submit" class="btn btn-primary" value="Save">
         </form> 
         </div>
     </script>  
@@ -103,11 +112,14 @@
             <div class="form-group">
                 <label for="summary" class="text-primary">Blog Title</label>
                 <input class="form-control" id="blogTitle" name="blogTitle" value="{{vm.blog.blogTitle}}">
+		<p></p>
 		<label for="summary" class="text-secondary">Author</label>
                 <input class="form-control" id="blogAuthor" name="blogAuthor" value="{{vm.blog.blogAuthor}}"> 
-                <label for="detail" class="text-primary">Blog Text</label>
+                <p></p>
+		<label for="detail" class="text-primary">Blog Text</label>
                 <textarea class="form-control" id="blogText" name="blogText" rows="3">{{vm.blog.blogText}}</textarea>
             </div>
+	    <a href="#/list" class="btn btn-secondary" role="button">Cancel</a>
             <input type="submit" class="btn btn-danger" value="Delete">
         </form> 
         </div>

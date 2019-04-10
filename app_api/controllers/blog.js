@@ -40,8 +40,8 @@ var buildBlogList = function (req, res, results) {
 		blogs.push({
 			blogTitle: obj.blogTitle,
 			created: obj.created,
-			blogAuthor: obj.blogAuthor, //-- add/update not working as desired
-			blogText: obj.blogTex,
+			blogAuthor: obj.blogAuthor, 
+			blogText: obj.blogText,
 			id: obj._id
 		});
 	});
@@ -102,8 +102,9 @@ module.exports.updateBlog = function (req, res) {
             _id: req.params.id
         }, {
             $set: {
-                "title": req.body.title,
-                "content": req.body.content
+                "blogTitle": req.body.blogTitle,
+		"blogText": req.body.blogText,
+                "blogAuthor": req.body.blogAuthor
             }
         },function (err, response) {
             if (err) {

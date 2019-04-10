@@ -7,8 +7,8 @@ var Blog = new Schema({
     id: ObjectId,
     blogTitle: {type: String, required: true},
     created:{type: String, required: true},
-    blogAuthor: String, 
-    blogText: {type: String, required: true}
+    blogText: {type: String, required: true},
+    blogAuthor: String
 });
 
 // Define Models
