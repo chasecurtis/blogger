@@ -33,6 +33,18 @@ app.config(function($routeProvider) {
 			controllerAs: 'vm'
 		})
 
+		.when('/login', {
+			templateUrl: 'pages/login.html',
+			controller: 'LoginController',
+			controllerAs: 'vm'
+		})
+		
+		.when('/register'. {
+			templateUrl: 'pages/register.html',
+			controller: 'RegisterController',
+			controllerAs: 'vm'
+		})
+		
 		.otherwise({redirectTo: '/'});
 	}
 );
