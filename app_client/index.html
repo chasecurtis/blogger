@@ -11,19 +11,11 @@
   </head>
   <body>
   
-    <!-- Navigation -->  
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
-    <a class="navbar-brand" href="#/">Home</a>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#/list">List Blogs</a>
-        <a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="#/add">Add Blog</a>
-	<a ng-show="!vm.isLoggedIn()" class="nav-item nav-link active" href="#/login">Sign In</a>
-	<a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="" ng-click="vm.logout()">Logout <small>({{vm.currentUser().email}}</small></a>
-	 </div>
-    </div>
-    </nav> 
-      
+<!-- Navigation Bar Directive -->
+<div ng-controller="NavigationController">
+	<navigation></navigation>
+</div>
+     
     <!-- Angular Templates -->  
 <!-- HOME screen -->    
     <script type="text/ng-template" id="pages/index.html">
