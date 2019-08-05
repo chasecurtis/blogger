@@ -3,7 +3,8 @@
   <head>
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-route.min.js"></script>  
-    <script src="/lib/angular-ui-router.min.js"></script>    
+    <script src="/lib/angular-ui-router.min.js"></script>
+    <script src="./bloggerApp.js"></script>    
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -12,10 +13,19 @@
   <body>
   
 <!-- Navigation Bar Directive -->
-<div ng-controller="NavigationController">
-	<navigation></navigation>
-</div>
-     
+<!-- Navigation --<!-- Navigation Bar -->
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
+    <a class="navbar-brand" href="#/">Home</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#/list">List Blogs</a>
+        <a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="#/add">Add Blog</a>
+        <a ng-show="!vm.isLoggedIn()" class="nav-item nav-link active" href="#/login">Sign In</a>
+        <a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="" ng-click="vm.logout()">Logout <small>({{vm.currentUser().email}}</small></a>
+         </div>
+    </div>
+    </nav>
+
     <!-- Angular Templates -->  
 <!-- HOME screen -->    
     <script type="text/ng-template" id="pages/index.html">
@@ -179,6 +189,5 @@
 <!-- Angular View (dynamic content goes here) -->  
     <div ng-view></div>
     
-<script src="bloggerApp.js"></script>
 </body>
 </html>               

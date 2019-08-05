@@ -6,7 +6,7 @@ app.directive('navigation', function() {
 		restrict: 'EA',
 		templateUrl: '/nav/navigation.html',
 		controller: 'NavigationController',
-		controllerAs: 'vm"
+		controllerAs: 'vm'
 	};
 });
 

@@ -39,7 +39,7 @@ app.config(function($routeProvider) {
 			controllerAs: 'vm'
 		})
 		
-		.when('/register'. {
+		.when('/register', {
 			templateUrl: 'pages/register.html',
 			controller: 'RegisterController',
 			controllerAs: 'vm'
@@ -50,7 +50,7 @@ app.config(function($routeProvider) {
 );
 
 /* REST Web API functions */
-function createBlog($http, data) {
+function createBlog($http, data, authentication) {
 	return $http.post('/api/blogs', data, {headers: {Authorization: 'Bearer ' + authentication.getToken() }});
  
 }
@@ -63,11 +63,11 @@ function getBlogById($http, id) {
 	return $http.get('/api/blogs/' + id); 
 }
 
-function updateBlogById($http, id, data) {
+function updateBlogById($http, id, data, authentication) {
 	return $http.put('/api/blogs/' + id, data, {headers: {Authorization: 'Bearer ' + authentication.getToken() }});
 }
 
-function deleteBlogById($http, id) {
+function deleteBlogById($http, id, authentication) {
 	return $http.delete('/api/blogs/' + id, {headers: {Authorization: 'Bearer ' + authentication.getToken() }});
 
 }
@@ -121,7 +121,7 @@ app.controller('ListController', [ '$http', function ListController($http) {
 }]);
 
 // UPDATE
-app.controller('EditController', [ '$http', '$routeParams', '$location', function EditController($http, $routeParams, $location) {
+app.controller('EditController', [ '$http', '$routeParams', '$location', function EditController($http, $routeParams, $location, authentication) {
 	var vm = this;
 	// Start w/ blank blog
 	vm.blog = {};
@@ -145,7 +145,7 @@ app.controller('EditController', [ '$http', '$routeParams', '$location', functio
 		data.blogAuthor = editForm.blogAuthor.value;
 		data.blogText = editForm.blogText.value;
 	
-		updateBlogById($http, vm.id, data).success(function(data) 		{
+		updateBlogById($http, vm.id, data, authentication).success(function(data) 		{
 			vm.message = "Blog data updated!";
 			// State Provider
 			$location.path('/list').replace();

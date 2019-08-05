@@ -11,13 +11,13 @@ var ctrlAuth = require('../controllers/auth');
 var db = require('../models/db');
 // Include blogs schema path
 var blogs = require('../models/blogs');
-
+var users = require('../models/users');
 // REST API //
 router.get('/blogs', ctrlBlog.blogList);
-router.post('/blogs', ctrlBlog.createBlog);
+router.post('/blogs', auth, ctrlBlog.createBlog);
 router.get('/blogs/:id', ctrlBlog.loadBlog);
-router.put('/blogs/:id', ctrlBlog.updateBlog);
-router.delete('/blogs/:id', ctrlBlog.deleteBlog);
+router.put('/blogs/:id', auth, ctrlBlog.updateBlog);
+router.delete('/blogs/:id', auth, ctrlBlog.deleteBlog);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
